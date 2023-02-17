@@ -67,6 +67,7 @@ button {
 @media screen and (min-width: 1400px) {
     .subfield {
         font-size: 210px;
+        line-height: 210px;
     }
     .gamefield {
         gap: 14px
