@@ -32,9 +32,18 @@ function checkVictory(box) {
         gameState[3] != '' && gameState[3] === gameState[6] && gameState[3] === gameState[9] ||
         gameState[1] != '' && gameState[1] === gameState[5] && gameState[1] === gameState[9] ||
         gameState[3] != '' && gameState[3] === gameState[5] && gameState[3] === gameState[7]) {
-            proclaimVictor(box)
+        proclaimVictor(box)
     }
 };
+
+function checkForDraw() {
+    for (let box in gameState) {
+        if (gameState[box] == '') {
+            return false
+        }
+    }
+    return true
+}
 
 function proclaimVictor(victor) {
     gameHeader.innerText = `${victor.toUpperCase()} vinner!`;
@@ -47,6 +56,10 @@ fieldBoxes.forEach(box =>
             makeMark(box);
             gameHeader.innerText = `${turn.toUpperCase()}s tur`
             checkVictory(gameState[box.id])
+            if (checkForDraw()) {
+                gameHeader.innerText = 'Oavgjort'
+                gameInProgress = false
+            }
         }
     })
 )
