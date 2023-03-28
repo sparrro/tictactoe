@@ -56,7 +56,7 @@ fieldBoxes.forEach(box =>
             makeMark(box);
             gameHeader.innerText = `${turn.toUpperCase()}s tur`
             checkVictory(gameState[box.id])
-            if (checkForDraw()) {
+            if (checkForDraw() && gameInProgress) {
                 gameHeader.innerText = 'Oavgjort'
                 gameInProgress = false
             }
